@@ -240,14 +240,18 @@
 
 <body>
 
-        <a-scene embedded="true" id="scene" fog="color: #bc483e; near: 0; far: 25;" antialias='true'>
+        <!--<a-scene embedded="true" id="scene" fog="color: #bc483e; near: 0; far: 25;" antialias='true'>-->
+        <a-scene embedded="true" id="scene" antialias='true'>
             <a-assets>
                 <img id="checked" src="js/checked.jpg">
                 <img id="unchecked" src="js/unchecked.jpg">
                 <img id="OK" src="img/OK.png">
                 <img id="clear" src="img/clear.png">
                 <img id="owndata" src="img/owndata.png">
+                <img id="amsterdam_brug" src="img/Amsterdam_Magere_Brug.png">
             </a-assets>
+            <a-sky src="#amsterdam_brug"></a-sky>
+
             <a-map width="5.12" height="5.12" pxToWorldRatio="100" position="0 0 -1" rotation="-90 0 0">
                 <a-sphere id="current-location" color="#00f" position="0 0 0" visible="false" radius="0.01"></a-sphere>
             </a-map>
@@ -265,7 +269,9 @@
             <a-light type="point" position="0 2 -1.7" intensity=".5"></a-light>
             <a-light type="point" position="0 2 1.7" intensity=".5"></a-light>
             <a-light type="ambient" intensity=".4"></a-light>
-            <a-entity id="sky" geometry="primitive: sphere; radius: 50;" material="shader: skyGradient; colorTop: #353449; colorBottom: #BC483E; side: back"></a-entity>
+
+            <!--<a-entity id="sky" geometry="primitive: sphere; radius: 50;" material="shader: skyGradient; colorTop: #353449; colorBottom: #BC483E; side: back"></a-entity>-->
+
             <script>
                 if (!AFRAME.utils.isMobile() && AFRAME.utils.checkHeadsetConnected()) {
                     document.write('<a-entity position="0 0 0"><a-camera></a-camera></a-entity><a-entity position="0 0 0" vive-controls="hand: right" vive-cursor></a-entity>');
