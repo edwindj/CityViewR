@@ -234,9 +234,14 @@ function get_CBS_data() {
             barsSet = setBars(data.value, max);
         }
     }
-    //xhr.open('GET', "https://opendata.cbs.nl/ODataApi/odata/83487NED/TypedDataSet?$filter=(substringof('WK0363',WijkenEnBuurten))&$select=WijkenEnBuurten," + querystring, true);
     xhr.open('GET', "https://opendata.cbs.nl/ODataApi/odata/83220NED/TypedDataSet?$filter=(substringof('BU0363',WijkenEnBuurten))&$select=WijkenEnBuurten," + querystring, true);
     xhr.send(null);
+    
+    // d3.json("https://opendata.cbs.nl/ODataApi/odata/83220NED/TypedDataSet?$filter=(substringof('BU0363',WijkenEnBuurten))&$select=WijkenEnBuurten," + querystring
+    //        ,(error, data) => {
+    //            console.log("mydata!!!",data);
+    //         }
+    // );
 }
 
 
@@ -334,7 +339,7 @@ function setBars(data, max) {
         var height = barData[i]['value'];
         var position = new THREE.Vector3();
         position.setFromMatrixPosition(bar.object3D.matrixWorld);
-        bar.setAttribute('height', (height / maxBarValue) * 1);
+        bar.setAttribute('height', (height / maxBarValue) * 2.5);
         bar.setAttribute('color', barData[i]['color']);
         bar.setAttribute('visible', true);
     }
@@ -385,6 +390,7 @@ function createInfoScreen(screenID, strheader, strsubheader) {
     header.setAttribute('height', screenheight * 0.1);
     header.setAttribute('scale', scale + " " + scale + " " + scale)
     header.setAttribute('position', "-" + ((screenwidth / 2) - 0.1) + " " + (0.4 * screenheight) + " 0.01");
+    header.setAttribute('color', "red");
     var str = 'color:white'.concat('; text: ', strheader, ';');
     header.setAttribute('bmfont-text', str);
     screen.appendChild(header);
